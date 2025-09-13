@@ -1,0 +1,14 @@
+<h1>{{title}}</h1>
+
+<ul>
+  {{#each rooms}}
+    <li>
+      <strong>{{name}}</strong> — ${{price}}/night — {{beds}} bed(s)
+      {{#if perks}}
+        <br/><small>Perks: {{#each perks}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</small>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
+
+<p><a href="/">Back to home</a> • <a href="/meals">Meals</a></p>

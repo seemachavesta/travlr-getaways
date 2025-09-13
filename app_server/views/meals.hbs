@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+
+<h2>Today’s Specials</h2>
+<ul>
+  {{#each specials}}
+    <li>
+      <strong>{{name}}</strong> — ${{price}}<br/>
+      <small>{{description}}</small>
+    </li>
+  {{/each}}
+</ul>
+
+<p><a href="/">Back to home</a></p>
