@@ -14,7 +14,8 @@ router.get('/rooms', ctrlTravlr.rooms);
 // News route
 router.get('/news', ctrlTravlr.news);
 
-
+// Trips route
+router.get('/trips', ctrlTravlr.trips);
 
 
 module.exports = router;

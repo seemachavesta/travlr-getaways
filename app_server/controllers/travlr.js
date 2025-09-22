@@ -1,4 +1,10 @@
+
+const tripsData = require('../../trips.json');
+
+
 // Controller for public pages
+
+
 const index = (req, res) => {
   res.render('index', {
     layout: 'layouts/layout',
@@ -53,6 +59,16 @@ const news = (req, res) => {
   });
 };
 
-module.exports = { index, meals, rooms, news };
+
+const trips = (req, res) => {
+  res.render('trips', {
+    layout: 'layouts/layout',
+    title: 'Travlr Getaways — Trips',
+    trips: tripsData
+  });
+};
+
+module.exports = { index, meals, rooms, news, trips };
+
 
 

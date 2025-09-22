@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Hawaii Beach Escape",
+    "duration": "7 nights",
+    "price": 1499,
+    "description": "Relax on the beaches of Maui with all-inclusive meals and activities."
+  },
+  {
+    "title": "Alaskan Adventure",
+    "duration": "10 nights",
+    "price": 2299,
+    "description": "Explore glaciers, wildlife, and breathtaking scenery with guided tours."
+  }
+]
