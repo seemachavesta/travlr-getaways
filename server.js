@@ -3,6 +3,8 @@ const path = require('path');
 const hbs = require('hbs');
 
 const travlrRouter = require('./app_server/routes/travlr');
+const tripsApi = require('./app_api/routes/trips');
+
 
 const app = express();
 
@@ -12,6 +14,7 @@ app.set('view engine', 'hbs');
 
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 
+app.use('/api/trips', tripsApi);
 
 //partials Registration 
 app.use(express.static(path.join(__dirname, 'public')));

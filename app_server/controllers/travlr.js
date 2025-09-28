@@ -1,5 +1,7 @@
 
-const tripsData = require('../../trips.json');
+//onst tripsData = require('../../trips.json');
+const { connect } = require('../../app_api/database');
+const Trip = require('../../app_api/models/trip');
 
 
 // Controller for public pages
@@ -60,13 +62,25 @@ const news = (req, res) => {
 };
 
 
-const trips = (req, res) => {
+// const trips = (req, res) => {
+//   res.render('trips', {
+//     layout: 'layouts/layout',
+//     title: 'Travlr Getaways — Trips',
+//     trips: tripsData
+//   });
+// };
+
+
+const trips = async (req, res) => {
+  await connect();
+  const trips = await Trip.find({}).sort({ createdAt: -1 }).lean();
   res.render('trips', {
     layout: 'layouts/layout',
     title: 'Travlr Getaways — Trips',
-    trips: tripsData
+    trips
   });
 };
+
 
 module.exports = { index, meals, rooms, news, trips };
 
