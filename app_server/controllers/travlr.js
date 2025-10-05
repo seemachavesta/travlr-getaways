@@ -1,7 +1,9 @@
 
 //onst tripsData = require('../../trips.json');
-const { connect } = require('../../app_api/database');
+const { connect } = require('../../app_api/models/database');
 const Trip = require('../../app_api/models/trip');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
 
 
 // Controller for public pages
@@ -72,13 +74,25 @@ const news = (req, res) => {
 
 
 const trips = async (req, res) => {
-  await connect();
-  const trips = await Trip.find({}).sort({ createdAt: -1 }).lean();
-  res.render('trips', {
-    layout: 'layouts/layout',
-    title: 'Travlr Getaways — Trips',
-    trips
-  });
+  try {
+    const base = `${req.protocol}://${req.get('host')}`; // e.g., http://localhost:3000
+    const r = await fetch(`${base}/API/trips`);
+    if (!r.ok) throw new Error(`API error ${r.status}`);
+    const trips = await r.json();
+
+    res.render('trips', {
+      layout: 'layouts/layout',
+      title: 'Travlr Getaways — Trips',
+      trips
+    });
+  } catch (err) {
+    console.error('Trips view error:', err.message);
+    res.status(500).render('index', {
+      layout: 'layouts/layout',
+      title: 'Travlr Getaways',
+      message: 'Unable to load trips right now.'
+    });
+  }
 };
 
 
