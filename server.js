@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
+const PORT = process.env.PORT || 3000;
 
 const travlrRouter = require('./app_server/routes/travlr');
 const tripsApi = require('./app_api/routes/trips');
 
 
 const app = express();
+
+app.use(express.json());
 
 /** View engine: Handlebars */
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -16,6 +19,7 @@ hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 
 // app.use('/api/trips', tripsApi);
 app.use('/API/trips', tripsApi);
+app.use('/API/trips', require('./app_api/routes/trips'));
 
 //partials Registration 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -37,9 +41,9 @@ app.use((req, res) => {
 });
 
 
-/** Start server */
-const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Express (MVC + HBS) running at http://localhost:${PORT}`);
 });
+
+app.listen(3000, () => console.log('Express running at http://localhost:3000'));

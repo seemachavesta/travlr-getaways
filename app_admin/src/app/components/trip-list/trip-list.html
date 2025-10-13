@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="mb-0">Trips</h2>
+  <a class="btn btn-primary" routerLink="/trips/new">Add Trip</a>
+</div>
+
+<div *ngIf="loading" class="alert alert-info">Loading trips…</div>
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<div class="row" *ngIf="!loading && !error">
+  <div class="col-md-4 mb-3" *ngFor="let t of trips; trackBy: trackByCode">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ t.title }}</h5>
+        <p class="card-text mb-1"><strong>Code:</strong> {{ t.code }}</p>
+        <p class="card-text mb-1"><strong>Duration:</strong> {{ t.duration }}</p>
+        <p class="card-text mb-2"><strong>Price:</strong> ${{ t.price }}</p>
+        <p class="card-text small">{{ t.description }}</p>
+        <a class="btn btn-outline-secondary btn-sm" [routerLink]="['/trips', t.code]">Edit</a>
+      </div>
+    </div>
+  </div>
+</div>
