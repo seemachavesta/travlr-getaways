@@ -11,3 +11,7 @@ JSON serves as the link between the Angular frontend and the Express backend, tr
  Testing
 
 I tested all RESTful API endpoints (GET, POST, PUT, DELETE) using Postman to verify data flow between the Angular SPA, Express API, and MongoDB. After implementing JWT-based authentication, I confirmed that admin features required valid tokens, ensuring secure CRUD operations. These tests validated both functionality and security across the stack.
+
+Reflection
+
+This project helped me strengthen my full stack development skills — from connecting an API to a secure Angular frontend to handling authentication and data management. I learned how to design and test a complete MEAN stack system, which has made me more confident and better prepared for real-world development roles.
