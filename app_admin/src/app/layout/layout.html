@@ -1,9 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">Travlr Admin</a>
-    <div>
-      <a class="nav-link d-inline" routerLink="/trips">Trips</a>
-      <a class="nav-link d-inline" routerLink="/trips/new">Add Trip</a>
+
+    <div class="ms-auto d-flex align-items-center gap-2">
+      <a class="btn btn-sm btn-outline-primary" routerLink="/trips">Trips</a>
+      <a class="btn btn-sm btn-outline-success" routerLink="/trips/new" *ngIf="isAuthed">Add Trip</a>
+
+      <a class="btn btn-sm btn-outline-primary" routerLink="/login" *ngIf="!isAuthed">Login</a>
+      <button class="btn btn-sm btn-outline-secondary" (click)="logout()" *ngIf="isAuthed">Logout</button>
     </div>
   </div>
 </nav>
